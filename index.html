@@ -44,6 +44,7 @@
     --lavender-mid: #e6dcfa;
     --text: #1e1730;
     --muted: #5d5670;
+    --body: #2e2a38;
     --line: #e8e2f3;
     --bg: #ffffff;
   }
@@ -95,7 +96,7 @@
   .eyebrow { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: #7b62c4; font-weight: 600; margin: 0 0 18px; }
   h1 { font-size: clamp(34px, 5vw, 54px); line-height: 1.12; font-weight: 300; margin: 0 0 22px; letter-spacing: -.01em; }
   h1 strong { font-weight: 600; }
-  .lead { font-size: 18px; color: var(--muted); max-width: 560px; margin: 0 0 32px; }
+  .lead { font-size: 18px; color: var(--body); max-width: 560px; margin: 0 0 32px; }
   .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
   .hero .badge img { width: min(320px, 100%); margin-inline: auto; }
 
@@ -104,19 +105,19 @@
   .alt { background: var(--lavender-soft); }
   h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 300; line-height: 1.2; margin: 0 0 14px; letter-spacing: -.005em; }
   h2 strong { font-weight: 600; }
-  .section-intro { color: var(--muted); max-width: 640px; margin: 0 0 44px; font-size: 17px; }
+  .section-intro { color: var(--body); max-width: 640px; margin: 0 0 44px; font-size: 17px; }
 
   /* Services */
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; }
   .card .tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #7b62c4; background: var(--lavender-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
   .card h3 { font-size: 20px; font-weight: 600; margin: 0 0 10px; line-height: 1.3; }
-  .card p { margin: 0 0 16px; color: var(--muted); font-size: 15.5px; }
+  .card p { margin: 0 0 16px; color: var(--body); font-size: 15.5px; }
   .card ul { margin: 0; padding: 0; list-style: none; }
   .card li { position: relative; padding-left: 22px; margin: 8px 0; font-size: 15px; }
   .card li::before { content: ""; position: absolute; left: 0; top: .6em; width: 9px; height: 9px; border-radius: 50%; background: var(--lavender); }
   .support { margin-top: 28px; padding: 24px 28px; border-radius: 20px; border: 1.5px dashed var(--lavender); display: flex; gap: 20px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-  .support p { margin: 0; max-width: 700px; color: var(--muted); }
+  .support p { margin: 0; max-width: 700px; color: var(--body); }
   .support strong { color: var(--navy); }
 
   /* Steps */
@@ -124,7 +125,7 @@
   .step { background: #fff; border-radius: 20px; padding: 28px 24px; border: 1px solid var(--line); }
   .step::before { counter-increment: s; content: "0" counter(s); display: block; font-weight: 300; font-size: 34px; color: var(--lavender); margin-bottom: 8px; }
   .step h3 { margin: 0 0 8px; font-size: 17px; font-weight: 600; }
-  .step p { margin: 0; color: var(--muted); font-size: 15px; }
+  .step p { margin: 0; color: var(--body); font-size: 15px; }
 
   /* About */
   .about { display: grid; grid-template-columns: 1fr 320px; gap: 28px 56px; align-items: center; }
@@ -145,20 +146,20 @@
   /* Contact */
   .contact { background: var(--navy); color: #fff; text-align: center; }
   .contact h2 { color: #fff; }
-  .contact p { color: #cfc6e6; max-width: 560px; margin: 0 auto 30px; font-size: 17px; }
+  .contact p { color: #ebe5f7; max-width: 560px; margin: 0 auto 30px; font-size: 17px; }
   .contact .btn { background: var(--lavender); color: var(--navy); }
   .contact .btn:hover { background: #d8c9f9; }
   .contact .links { margin-top: 22px; font-size: 15px; }
   .contact .links a { color: #fff; text-decoration-color: var(--lavender); text-underline-offset: 4px; }
 
-  footer.site { background: var(--navy); border-top: 1px solid #33284f; padding: 28px 0; color: #a79ec2; font-size: 14px; }
+  footer.site { background: var(--navy); border-top: 1px solid #33284f; padding: 28px 0; color: #c4bcdc; font-size: 14px; }
   footer.site .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
   footer.site img { height: 30px; width: auto; }
 
   /* Tablet and mobile */
   @media (max-width: 900px) {
     html { scroll-padding-top: 64px; }
-    section { padding: 64px 0; }
+    section { padding: 56px 0; }
 
     /* Header and mobile menu */
     .nav { height: 64px; }
@@ -192,7 +193,7 @@
     .nav .menu a { display: block; padding: 13px 0; font-size: 16px; color: var(--navy); }
 
     /* Hero: small centred badge above the headline */
-    .hero { padding: 40px 0 48px; }
+    .hero { padding: 40px 0 40px; }
     .hero .grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
     .hero .badge { order: -1; }
     .hero .badge img { width: 136px; margin-inline: auto; }
@@ -216,8 +217,9 @@
 
   /* Phones */
   @media (max-width: 600px) {
-    .about { grid-template-columns: 1fr; gap: 24px; }
-    .photo { order: -1; width: min(240px, calc(100% - 14px)); justify-self: start; margin: 7px 0 0 7px; }
+    .about { grid-template-columns: 1fr; gap: 28px; }
+    .photo { order: -1; width: min(240px, calc(100% - 14px)); justify-self: center; margin: 7px 0 0; }
+    .about .copy h2 { text-align: center; margin-bottom: 18px; }
     .highlights { grid-template-columns: 1fr; }
   }
 
@@ -225,7 +227,7 @@
     .nav .logo img { height: 30px; }
     .btn.small { padding: 9px 16px; font-size: 13.5px; }
 
-    .hero { padding: 32px 0 40px; }
+    .hero { padding: 32px 0 28px; }
     .hero .grid { gap: 20px; }
     .hero .badge img { width: 112px; }
     .eyebrow { font-size: 12px; letter-spacing: .14em; margin-bottom: 14px; }
@@ -233,11 +235,11 @@
     .lead { font-size: 16.5px; margin-bottom: 26px; }
     .cta-row .btn { flex: 1 1 100%; max-width: 320px; margin-inline: auto; text-align: center; }
 
-    section { padding: 56px 0; }
+    section { padding: 48px 0; }
     h2 { text-wrap: balance; }
-    .section-intro { font-size: 16px; margin-bottom: 32px; }
+    .section-intro { font-size: 16px; margin-bottom: 28px; }
     .card { padding: 26px 22px; }
-    .support { padding: 22px; }
+    .support { padding: 22px; margin-top: 22px; }
     .support .btn { width: 100%; text-align: center; }
     .steps { grid-template-columns: 1fr; gap: 14px; }
     .step { padding: 22px 22px 24px; }
