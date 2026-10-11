@@ -57,8 +57,9 @@
     background: var(--bg);
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
   }
-  img { max-width: 100%; display: block; }
+  img { max-width: 100%; height: auto; display: block; }
   a { color: inherit; }
   .wrap { width: min(1080px, 100% - 40px); margin-inline: auto; }
 
@@ -71,10 +72,11 @@
   }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
   .nav .logo img { height: 38px; width: auto; }
+  .nav-actions { display: flex; align-items: center; gap: 28px; }
   .nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; align-items: center; }
   .nav ul a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--muted); }
   .nav ul a:hover { color: var(--navy); }
-  .nav ul a.btn, .nav ul a.btn:hover { color: #fff; }
+  .menu-toggle { display: none; }
   .btn {
     display: inline-block; text-decoration: none;
     background: var(--navy); color: #fff;
@@ -153,23 +155,113 @@
   footer.site .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
   footer.site img { height: 30px; width: auto; }
 
+  /* Tablet and mobile */
   @media (max-width: 900px) {
-    .hero .grid, .about { grid-template-columns: 1fr; }
-    .hero .badge { order: -1; }
-    .hero .badge img { width: 150px; margin-inline: 0; }
-    .cards { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr 1fr; }
-    .nav ul li:not(:last-child) { display: none; }
-    .about { gap: 28px; }
-    .photo { order: -1; width: min(246px, calc(100% - 14px)); justify-self: start; margin: 0 0 0 7px; }
-    .facts { padding: 26px 22px; margin-top: 0; }
-    .highlights { grid-template-columns: 1fr; gap: 16px; padding-bottom: 20px; margin-bottom: 20px; }
-    .hero { padding: 56px 0 64px; }
+    html { scroll-padding-top: 64px; }
     section { padding: 64px 0; }
+
+    /* Header and mobile menu */
+    .nav { height: 64px; }
+    .nav .logo { display: block; padding-block: 7px; }
+    .nav-actions { gap: 10px; }
+    .menu-toggle {
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 40px; height: 40px; padding: 0; cursor: pointer;
+      background: transparent; color: var(--navy);
+      border: 1.5px solid var(--lavender); border-radius: 50%;
+    }
+    .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after {
+      display: block; width: 16px; height: 1.5px; background: currentColor; border-radius: 2px;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .menu-toggle span { position: relative; }
+    .menu-toggle span::before, .menu-toggle span::after { content: ""; position: absolute; left: 0; }
+    .menu-toggle span::before { top: -5px; }
+    .menu-toggle span::after { top: 5px; }
+    .menu-open .menu-toggle span { background: transparent; }
+    .menu-open .menu-toggle span::before { transform: translateY(5px) rotate(45deg); }
+    .menu-open .menu-toggle span::after { transform: translateY(-5px) rotate(-45deg); }
+    .nav .menu {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      padding: 6px 20px 14px; background: #fff;
+      border-bottom: 1px solid var(--line); box-shadow: 0 12px 24px -16px rgba(30,23,48,.25);
+    }
+    .menu-open .nav .menu { display: flex; }
+    .nav .menu li + li { border-top: 1px solid var(--line); }
+    .nav .menu a { display: block; padding: 13px 0; font-size: 16px; color: var(--navy); }
+
+    /* Hero: small centred badge above the headline */
+    .hero { padding: 40px 0 48px; }
+    .hero .grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+    .hero .badge { order: -1; }
+    .hero .badge img { width: 136px; margin-inline: auto; }
+    .hero h1 { text-wrap: balance; }
+    .hero .lead { margin-inline: auto; }
+    .cta-row { justify-content: center; }
+
+    /* Services and steps */
+    .cards { grid-template-columns: 1fr; gap: 18px; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 18px; }
+
+    /* About */
+    .about { grid-template-columns: 1fr 220px; gap: 28px 32px; align-items: start; }
+    .photo { width: 220px; justify-self: end; margin: 6px 7px 0 0; }
+    .facts { padding: 26px 22px; margin-top: 0; }
+    .highlights { gap: 16px 24px; padding-bottom: 20px; margin-bottom: 20px; }
+
+    /* Contact */
+    .contact .links a { display: inline-block; padding: 8px 2px; }
   }
+
+  /* Phones */
+  @media (max-width: 600px) {
+    .about { grid-template-columns: 1fr; gap: 24px; }
+    .photo { order: -1; width: min(240px, calc(100% - 14px)); justify-self: start; margin: 7px 0 0 7px; }
+    .highlights { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 520px) {
-    .steps { grid-template-columns: 1fr; }
-    .nav .logo img { height: 32px; }
+    .nav .logo img { height: 30px; }
+    .btn.small { padding: 9px 16px; font-size: 13.5px; }
+
+    .hero { padding: 32px 0 40px; }
+    .hero .grid { gap: 20px; }
+    .hero .badge img { width: 112px; }
+    .eyebrow { font-size: 12px; letter-spacing: .14em; margin-bottom: 14px; }
+    h1 { font-size: clamp(29px, 8.4vw, 38px); margin-bottom: 18px; }
+    .lead { font-size: 16.5px; margin-bottom: 26px; }
+    .cta-row .btn { flex: 1 1 100%; max-width: 320px; margin-inline: auto; text-align: center; }
+
+    section { padding: 56px 0; }
+    h2 { text-wrap: balance; }
+    .section-intro { font-size: 16px; margin-bottom: 32px; }
+    .card { padding: 26px 22px; }
+    .support { padding: 22px; }
+    .support .btn { width: 100%; text-align: center; }
+    .steps { grid-template-columns: 1fr; gap: 14px; }
+    .step { padding: 22px 22px 24px; }
+    .step::before { font-size: 30px; margin-bottom: 4px; }
+
+    .about p { font-size: 16px; }
+    .facts { padding: 24px 20px; }
+
+    .contact p { font-size: 16px; }
+    .contact .btn { padding: 14px 34px; }
+    footer.site .row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+
+  @media (max-width: 360px) {
+    .wrap { width: calc(100% - 32px); }
+    .nav .menu { padding-inline: 16px; }
+    .nav .logo img { height: 27px; }
+    .nav-actions { gap: 8px; }
+    .btn.small { padding: 8px 13px; font-size: 13px; }
+    .menu-toggle { width: 38px; height: 38px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
 </style>
 </head>
@@ -180,12 +272,15 @@
     <a class="logo" href="#top" aria-label="NS Visibility home">
       <img src="assets/ns-visibility_horizontal_primary.png" alt="NS Visibility" width="180" height="38">
     </a>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">How it works</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a class="btn small" href="#contact">Get in touch</a></li>
-    </ul>
+    <nav class="nav-actions" aria-label="Main">
+      <ul id="site-menu" class="menu">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <a class="btn small" href="#contact">Get in touch</a>
+      <button class="menu-toggle" type="button" aria-controls="site-menu" aria-expanded="false" aria-label="Open menu"><span></span></button>
+    </nav>
   </div>
 </header>
 
@@ -322,6 +417,22 @@
   </div>
 </footer>
 
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  (function () {
+    var header = document.querySelector('header.site');
+    var toggle = header.querySelector('.menu-toggle');
+    function setOpen(open) {
+      header.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    toggle.addEventListener('click', function () { setOpen(!header.classList.contains('menu-open')); });
+    header.querySelectorAll('.menu a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    window.matchMedia('(min-width: 901px)').addEventListener('change', function (e) { if (e.matches) setOpen(false); });
+  })();
+</script>
 </body>
 </html>
