@@ -4,7 +4,12 @@ Static one-page site for nsvisibility.com. Hosted free on GitHub Pages.
 
 ## Files
 - index.html : the whole site (text, styles, layout)
-- assets/ : logos and favicon
+- 404.html : branded "page not found" page (GitHub Pages serves it for missing URLs)
+- favicon.ico : browser tab icon
+- assets/ : logos, photo and icons. The `-640.webp`, `-720.webp` and `-572.webp` files are
+  smaller copies of the PNG logos used on the page; the PNGs stay as master files and the
+  badge PNG is the social sharing image.
+- assets/fonts/ : self-hosted Montserrat (same files Google Fonts serves), with its OFL licence
 - CNAME : tells GitHub Pages to serve the site on nsvisibility.com
 - robots.txt, sitemap.xml : for search engines
 
@@ -22,3 +27,5 @@ Static one-page site for nsvisibility.com. Hosted free on GitHub Pages.
 - Email address: search for `mailto:` in index.html.
 - Text: all copy is plain HTML in index.html.
 - After deploying, add the site in Google Search Console and submit sitemap.xml.
+- When you add a page, give it its own <title>, meta description and canonical URL,
+  and add it to sitemap.xml.

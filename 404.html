@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | NS Visibility</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/assets/ns-visibility_icon_primary.png">
+<meta name="theme-color" content="#1e1730">
+<style>
+  @font-face {
+    font-family: "Montserrat"; font-style: normal; font-weight: 300 600; font-display: swap;
+    src: url("/assets/fonts/montserrat-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  :root { --navy: #1e1730; --lavender-soft: #f4effd; --body: #2e2a38; --accent: #7359c1; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; text-align: center;
+    font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--navy); line-height: 1.65; padding: 40px 20px;
+    background: linear-gradient(180deg, var(--lavender-soft), #fff 70%);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; margin: 0 auto 28px; width: 112px; height: auto; }
+  .eyebrow { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 14px; }
+  h1 { font-size: clamp(29px, 5vw, 44px); line-height: 1.12; font-weight: 300; margin: 0 0 16px; }
+  h1 strong { font-weight: 600; }
+  p { color: var(--body); max-width: 460px; margin: 0 auto 28px; }
+  .btn { display: inline-block; text-decoration: none; background: var(--navy); color: #fff; padding: 13px 26px; border-radius: 999px; font-weight: 500; font-size: 15px; }
+  .btn:hover { background: #33284f; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <img src="/assets/ns-visibility_badge_primary-640.webp" alt="NS Visibility logo" width="112" height="112">
+  <p class="eyebrow">Error 404</p>
+  <h1>This page <strong>can't be found</strong></h1>
+  <p>The link may be broken or the page may have moved.</p>
+  <a class="btn" href="/">Go to the homepage</a>
+</main>
+</body>
+</html>
