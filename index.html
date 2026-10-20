@@ -172,7 +172,7 @@
   .section-intro { color: var(--body); max-width: 640px; margin: 0 0 44px; font-size: 17px; }
 
   /* Services */
-  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
   .card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; }
   .card .tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); background: var(--lavender-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
   .card h3 { font-size: 20px; font-weight: 600; margin: 0 0 10px; line-height: 1.3; }
@@ -180,8 +180,10 @@
   .card ul { margin: 0; padding: 0; list-style: none; }
   .card li { position: relative; padding-left: 22px; margin: 8px 0; font-size: 15px; }
   .card li::before { content: ""; position: absolute; left: 0; top: .6em; width: 9px; height: 9px; border-radius: 50%; background: var(--lavender); }
-  .support { margin-top: 28px; padding: 24px 28px; border-radius: 20px; border: 1.5px dashed var(--lavender); display: flex; gap: 20px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-  .support p { margin: 0; max-width: 700px; color: var(--body); }
+  .strips { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 28px; }
+  .support { padding: 24px 28px; border-radius: 20px; border: 1.5px dashed var(--lavender); display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .support p { margin: 0; color: var(--body); }
+  .support .btn { margin-top: auto; }
   .support strong { color: var(--navy); }
 
   /* Steps */
@@ -268,6 +270,7 @@
 
     /* Services and steps */
     .cards { grid-template-columns: 1fr; gap: 18px; }
+    .strips { grid-template-columns: 1fr; gap: 18px; }
     .steps { grid-template-columns: 1fr 1fr; gap: 18px; }
 
     /* About */
@@ -304,7 +307,8 @@
     h2 { text-wrap: balance; }
     .section-intro { font-size: 16px; margin-bottom: 28px; }
     .card { padding: 26px 22px; }
-    .support { padding: 22px; margin-top: 22px; }
+    .strips { margin-top: 22px; }
+    .support { padding: 22px; }
     .support .btn { width: 100%; text-align: center; }
     .steps { grid-template-columns: 1fr; gap: 14px; }
     .step { padding: 22px 22px 24px; }
@@ -373,19 +377,20 @@
 
   <section id="services">
     <div class="wrap">
-      <h2>Three audits. <strong>One clear plan.</strong></h2>
-      <p class="section-intro">Pick one audit or combine them. Each one ends with a ranked list of actions, so your team or developer knows exactly where to start.</p>
+      <h2>Four audits. <strong>One clear plan.</strong></h2>
+      <p class="section-intro">Pick one audit or combine them. Each one ends with a ranked list of actions, with practical guidance on how to fix the issues, so your team knows exactly where to start.</p>
 
       <div class="cards">
         <article class="card">
           <span class="tag">Technical</span>
           <h3>Technical SEO audit</h3>
-          <p>Find what is stopping search engines from crawling, understanding and ranking your site.</p>
+          <p>Find out what's making it harder for search engines to crawl, understand and rank your website, including technical issues that affect its performance.</p>
           <ul>
-            <li>Crawl and indexing issues</li>
-            <li>Site structure and internal linking</li>
+            <li>Crawling and indexing issues</li>
             <li>Page speed and Core Web Vitals</li>
+            <li>Structured data and schema markup</li>
             <li>Redirects, duplicates and canonicals</li>
+            <li>Site structure and internal linking</li>
             <li>Migration and CMS checks</li>
           </ul>
         </article>
@@ -393,33 +398,52 @@
         <article class="card">
           <span class="tag">Content</span>
           <h3>Content strategy audit</h3>
-          <p>See which pages earn their place, which need work, and which topics you are missing.</p>
+          <p>See which pages are performing, which need work and what your potential customers are searching for that you haven't covered yet.</p>
           <ul>
-            <li>Keyword and search intent mapping</li>
+            <li>Keyword research, mapping and search intent</li>
             <li>Content gaps against competitors</li>
-            <li>Topic clusters and page templates</li>
-            <li>Refresh, merge or remove decisions</li>
-            <li>A content roadmap you can hand to writers</li>
+            <li>Topic clusters and internal linking</li>
+            <li>Content refresh, merge or removal recommendations</li>
+            <li>Content roadmap and briefs for writers</li>
           </ul>
         </article>
 
         <article class="card">
           <span class="tag">AI search</span>
-          <h3>GEO audit</h3>
-          <p>Check whether your brand shows up when people ask ChatGPT, Gemini, Perplexity and AI search tools.</p>
+          <h3>AI visibility audit</h3>
+          <p>See how your brand appears in AI-generated answers, which competitors get recommended instead and where you could improve.</p>
           <ul>
-            <li>Current visibility in AI answers</li>
-            <li>Who gets cited instead of you</li>
-            <li>Content and structure improvements</li>
-            <li>Entity and brand signal checks</li>
-            <li>Realistic priorities, no hype</li>
+            <li>Current visibility in AI-generated answers</li>
+            <li>Competitors mentioned or cited instead</li>
+            <li>AI referral traffic, where analytics access is available</li>
+            <li>Content and website structure improvements</li>
+            <li>Brand mentions and information across the web</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Trust</span>
+          <h3>Trust and reputation audit</h3>
+          <p>Find out whether your website and online presence give potential customers the information and confidence they need to trust your business.</p>
+          <ul>
+            <li>Author information and About page</li>
+            <li>Contact details and important policies</li>
+            <li>Customer reviews and online reputation</li>
+            <li>Sources and supporting evidence on key pages</li>
+            <li>Brand consistency and mentions across the web</li>
           </ul>
         </article>
       </div>
 
-      <div class="support">
-        <p><strong>Need more than an audit?</strong> I also offer ongoing SEO support, including roadmap planning, content briefs, reporting and working alongside your developer.</p>
-        <a class="btn ghost" href="#contact">Ask about support</a>
+      <div class="strips">
+        <div class="support">
+          <p><strong>Launching a new website?</strong> I'll help you get the SEO basics right from day one, including Google Search Console setup, sitemap submission, indexing checks and making sure search engines can discover your important pages.</p>
+          <a class="btn ghost" href="#contact">Ask about launch setup</a>
+        </div>
+        <div class="support">
+          <p><strong>Need more than an audit?</strong> I also offer ongoing SEO support, including roadmap planning, content briefs, reporting and working alongside your developer.</p>
+          <a class="btn ghost" href="#contact">Ask about support</a>
+        </div>
       </div>
     </div>
   </section>
