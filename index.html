@@ -175,17 +175,23 @@
 
   /* Services */
   .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-  .card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; }
   .card .tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); background: var(--lavender-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
   .card h3 { font-size: 20px; font-weight: 600; margin: 0 0 10px; line-height: 1.3; }
   .card p { margin: 0 0 16px; color: var(--body); font-size: 15.5px; }
   .card ul { margin: 0; padding: 0; list-style: none; }
   .card li { position: relative; padding-left: 22px; margin: 8px 0; font-size: 15px; }
+  .card li:first-child { margin-top: 0; }
+  .more { display: inline-block; margin-top: auto; padding: 10px 0 0; font-size: 15px; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .card .tag, .card .more { align-self: flex-start; }
+  .card .more { padding-top: 22px; }
+  .more:hover { text-decoration: underline; text-underline-offset: 4px; }
   .card li::before { content: ""; position: absolute; left: 0; top: .6em; width: 9px; height: 9px; border-radius: 50%; background: var(--lavender); }
   .strips { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 28px; }
   .support { padding: 24px 28px; border-radius: 20px; border: 1.5px dashed var(--lavender); display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
   .support p { margin: 0; color: var(--body); }
-  .support .btn { margin-top: auto; }
+  .strip-actions { margin-top: auto; align-self: stretch; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
+  .strip-actions .more { padding: 10px 0; }
   .support strong { color: var(--navy); }
 
   /* Steps */
@@ -348,7 +354,7 @@
     </a>
     <nav class="nav-actions" aria-label="Main">
       <ul id="site-menu" class="menu">
-        <li><a href="#services">Services</a></li>
+        <li><a href="/services/">Services</a></li>
         <li><a href="#process">How it works</a></li>
         <li><a href="#about">About</a></li>
       </ul>
@@ -395,6 +401,7 @@
             <li>Site structure and internal linking</li>
             <li>Migration and CMS checks</li>
           </ul>
+          <a class="more" href="/services/#technical-seo">Learn more<span class="sr-only"> about the Technical SEO audit</span> <span aria-hidden="true">&rarr;</span></a>
         </article>
 
         <article class="card">
@@ -408,6 +415,7 @@
             <li>Content refresh, merge or removal recommendations</li>
             <li>Content roadmap and briefs for writers</li>
           </ul>
+          <a class="more" href="/services/#content-strategy">Learn more<span class="sr-only"> about the content strategy audit</span> <span aria-hidden="true">&rarr;</span></a>
         </article>
 
         <article class="card">
@@ -421,6 +429,7 @@
             <li>Content and website structure improvements</li>
             <li>Brand mentions and information across the web</li>
           </ul>
+          <a class="more" href="/services/#ai-visibility">Learn more<span class="sr-only"> about the AI visibility audit</span> <span aria-hidden="true">&rarr;</span></a>
         </article>
 
         <article class="card">
@@ -434,17 +443,24 @@
             <li>Sources and supporting evidence on key pages</li>
             <li>Brand consistency and mentions across the web</li>
           </ul>
+          <a class="more" href="/services/#trust-reputation">Learn more<span class="sr-only"> about the trust and reputation audit</span> <span aria-hidden="true">&rarr;</span></a>
         </article>
       </div>
 
       <div class="strips">
         <div class="support">
           <p><strong>Launching a new website?</strong> I'll help you get the SEO basics right from day one, including Google Search Console setup, sitemap submission, indexing checks and making sure search engines can discover your important pages.</p>
-          <a class="btn ghost" href="#contact">Ask about launch setup</a>
+          <div class="strip-actions">
+            <a class="btn ghost" href="#contact">Ask about launch setup</a>
+            <a class="more" href="/services/#website-launch">Learn more<span class="sr-only"> about website launch support</span> <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
         <div class="support">
           <p><strong>Need more than an audit?</strong> I also offer ongoing SEO support, including roadmap planning, content briefs, reporting and working alongside your developer.</p>
-          <a class="btn ghost" href="#contact">Ask about support</a>
+          <div class="strip-actions">
+            <a class="btn ghost" href="#contact">Ask about support</a>
+            <a class="more" href="/services/#ongoing-support">Learn more<span class="sr-only"> about ongoing SEO support</span> <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
       </div>
     </div>
