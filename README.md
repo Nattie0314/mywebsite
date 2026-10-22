@@ -4,8 +4,10 @@ Static site for nsvisibility.com. Hosted free on GitHub Pages.
 
 ## Files
 - index.html : the homepage (text, styles, layout)
-- services/index.html : the Services page, served at /services/. It has its own copy of the
-  shared styles (header, buttons, footer), so style changes there may need making in both files.
+- services/index.html : the Services page, served at /services/.
+- how-it-works/index.html : the How it works page, served at /how-it-works/.
+  Each page has its own copy of the shared styles (header, buttons, footer), so style changes
+  there may need making in every page.
 - 404.html : branded "page not found" page (GitHub Pages serves it for missing URLs)
 - favicon.ico : browser tab icon
 - assets/ : logos, photo and icons. The `-640.webp`, `-720.webp` and `-572.webp` files are
@@ -31,3 +33,8 @@ Static site for nsvisibility.com. Hosted free on GitHub Pages.
 - After deploying, add the site in Google Search Console and submit sitemap.xml.
 - When you add a page, give it its own <title>, meta description and canonical URL,
   and add it to sitemap.xml.
+- URL rule: every page URL ends with a trailing slash (`/services/`, never `/services`).
+  Create each page as `folder-name/index.html` so GitHub Pages serves it at `/folder-name/`
+  and redirects the no-slash version there. Use the trailing-slash URL everywhere: internal
+  links, canonical, og:url, structured data and sitemap.xml. Files (images, fonts, favicon)
+  keep their normal paths without a slash.
