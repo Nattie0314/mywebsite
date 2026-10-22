@@ -1,9 +1,11 @@
 # NS Visibility website
 
-Static one-page site for nsvisibility.com. Hosted free on GitHub Pages.
+Static site for nsvisibility.com. Hosted free on GitHub Pages.
 
 ## Files
-- index.html : the whole site (text, styles, layout)
+- index.html : the homepage (text, styles, layout)
+- services/index.html : the Services page, served at /services/. It has its own copy of the
+  shared styles (header, buttons, footer), so style changes there may need making in both files.
 - 404.html : branded "page not found" page (GitHub Pages serves it for missing URLs)
 - favicon.ico : browser tab icon
 - assets/ : logos, photo and icons. The `-640.webp`, `-720.webp` and `-572.webp` files are
