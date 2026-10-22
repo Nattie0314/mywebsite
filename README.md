@@ -6,6 +6,7 @@ Static site for nsvisibility.com. Hosted free on GitHub Pages.
 - index.html : the homepage (text, styles, layout)
 - services/index.html : the Services page, served at /services/.
 - how-it-works/index.html : the How it works page, served at /how-it-works/.
+- about/index.html : the About page, served at /about/.
   Each page has its own copy of the shared styles (header, buttons, footer), so style changes
   there may need making in every page.
 - 404.html : branded "page not found" page (GitHub Pages serves it for missing URLs)
