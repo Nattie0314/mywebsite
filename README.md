@@ -33,3 +33,8 @@ Static site for nsvisibility.com. Hosted free on GitHub Pages.
 - After deploying, add the site in Google Search Console and submit sitemap.xml.
 - When you add a page, give it its own <title>, meta description and canonical URL,
   and add it to sitemap.xml.
+- URL rule: every page URL ends with a trailing slash (`/services/`, never `/services`).
+  Create each page as `folder-name/index.html` so GitHub Pages serves it at `/folder-name/`
+  and redirects the no-slash version there. Use the trailing-slash URL everywhere: internal
+  links, canonical, og:url, structured data and sitemap.xml. Files (images, fonts, favicon)
+  keep their normal paths without a slash.
