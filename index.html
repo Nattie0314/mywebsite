@@ -226,6 +226,26 @@
   .contact .links { margin-top: 22px; font-size: 15px; }
   .contact .links a { color: #fff; text-decoration-color: var(--lavender); text-underline-offset: 4px; }
 
+  /* Contact form */
+  .cform { max-width: 620px; margin: 0 auto; text-align: left; display: grid; gap: 16px; }
+  .cform .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cform label { display: block; font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .cform .opt { font-weight: 400; color: #c4bcdc; }
+  .cform input, .cform select, .cform textarea {
+    width: 100%; font: inherit; font-size: 16px; color: var(--navy); background: #fff;
+    border: 1.5px solid transparent; border-radius: 10px; padding: 12px 14px;
+  }
+  .cform input, .cform select { min-height: 52px; }
+  .cform textarea { min-height: 130px; resize: vertical; }
+  .cform input:focus-visible, .cform select:focus-visible, .cform textarea:focus-visible { outline: 3px solid var(--lavender); outline-offset: 2px; }
+  .cform .hp { display: none; }
+  .cform button.btn { border: 0; cursor: pointer; font: inherit; font-weight: 600; justify-self: center; }
+  .cform button.btn[disabled] { opacity: .6; cursor: default; }
+  .cform .note { font-size: 13.5px; color: #c4bcdc; margin: 0; max-width: none; text-align: center; }
+  .cform .status { font-size: 15px; margin: 0; max-width: none; text-align: center; min-height: 1.4em; color: #fff; }
+  .cform .status.err { color: #ffd0d0; }
+  @media (max-width: 600px) { .cform .pair { grid-template-columns: 1fr; } }
+
   footer.site { background: var(--navy); border-top: 1px solid #33284f; padding: 28px 0; color: #c4bcdc; font-size: 14px; }
   footer.site .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
   footer.site img { height: 30px; width: auto; }
@@ -511,9 +531,48 @@
     <div class="wrap">
       <h2>Let's look at <strong>your site</strong></h2>
       <p>Send me your website and a line about what you want to improve. I will reply within two working days.</p>
-      <a class="btn" href="mailto:contact@nsvisibility.com?subject=SEO%20audit%20enquiry">Email me</a>
+      <form id="contact-form" class="cform" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="New enquiry from nsvisibility.com">
+        <input type="hidden" name="from_name" value="NS Visibility website">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="pair">
+          <div>
+            <label for="cf-name">Your name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="pair">
+          <div>
+            <label for="cf-site">Your website <span class="opt">(optional)</span></label>
+            <input id="cf-site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="example.com">
+          </div>
+          <div>
+            <label for="cf-topic">What do you need help with?</label>
+            <select id="cf-topic" name="topic">
+              <option>SEO audit</option>
+              <option>AI visibility</option>
+              <option>Content strategy</option>
+              <option>Website launch setup</option>
+              <option>Ongoing SEO support</option>
+              <option>Something else</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send message</button>
+        <p class="note">I only use your details to reply to your message.</p>
+        <p class="status" id="cf-status" role="status" aria-live="polite"></p>
+      </form>
       <div class="links">
-        or find me on <a href="https://www.linkedin.com/in/natalia-szyszka-9566b3132/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        or email <a href="mailto:contact@nsvisibility.com">contact@nsvisibility.com</a> or find me on <a href="https://www.linkedin.com/in/natalia-szyszka-9566b3132/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
       </div>
     </div>
   </section>
@@ -529,6 +588,34 @@
 
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
+
+  (function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('cf-status');
+    var button = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.className = 'status';
+      status.textContent = 'Sending...';
+      button.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok && d.success !== false, d: d }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.d && res.d.message);
+          form.reset();
+          status.textContent = 'Thanks, your message is on its way. I will reply within two working days.';
+        })
+        .catch(function () {
+          status.className = 'status err';
+          status.textContent = 'Something went wrong. Please email me at contact@nsvisibility.com instead.';
+        })
+        .then(function () { button.disabled = false; });
+    });
+  })();
 
   (function () {
     var header = document.querySelector('header.site');
